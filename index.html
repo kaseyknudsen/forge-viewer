@@ -1,59 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta
-      name="viewport"
-      content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=no"
-    />
-    <meta charset="utf-8" />
-
-    <link
-      rel="stylesheet"
-      href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.min.css"
-      type="text/css"
-    />
-    <script
-      src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.min.js"
-    >
-            let viewer;
-      const options = {
-          env: 'AutodeskProduction2',
-          api: 'streamingV2',  // for models uploaded to EMEA change this option to 'streamingV2_EU'
-          getAccessToken: function(onTokenReady) {
-              var token = 'YOUR_ACCESS_TOKEN';
-              var timeInSeconds = 3600; // Use value provided by APS Authentication (OAuth) API
-              onTokenReady(token, timeInSeconds);
-          }
-      };
-
-      Autodesk.Viewing.Initializer(options, function() {
-
-          var htmlDiv = document.getElementById('forgeViewer');
-          viewer = new Autodesk.Viewing.GuiViewer3D(htmlDiv);
-          var startedCode = viewer.start();
-          if (startedCode > 0) {
-              console.error('Failed to create a Viewer: WebGL not supported.');
-              return;
-          }
-
-          console.log('Initialization complete, loading a model next...');
-
-      });
-    </script>
-
-    <style>
-      body {
-        margin: 0;
-      }
-      #forgeViewer {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        background-color: #f0f8ff;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forge Viewer</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="forgeViewer"></div>
+    <div id="viewer"></div>
+    <select id="models"></select>
+    <script src="script.js"></script>
   </body>
 </html>
